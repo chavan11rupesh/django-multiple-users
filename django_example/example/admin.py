@@ -7,7 +7,6 @@ class FormAdmin(admin.ModelAdmin):
     def get_fields(self, request, obj=None):
         fields = super(FormAdmin, self).get_fields(request, obj)
         groups = request.user.groups.all()
-        a = [True if 'group2' in groups else False]
         is_group_2 = [True for i in groups if i.name == "group2"]
         is_super = request.user.is_superuser
         if is_super and is_group_2 :
